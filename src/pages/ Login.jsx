@@ -23,38 +23,18 @@ export default function Login() {
   };
 
   return (
-    <div className="container mx-auto p-4 max-w-md">
-      <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          className="input input-bordered w-full"
-          required
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          className="input input-bordered w-full"
-          required
-        />
-        <button className="btn btn-primary w-full">Login</button>
-      </form>
-      <div className="text-center mt-4 space-y-2">
-        <button className="btn btn-outline w-full" onClick={signInWithGoogle}>
-          Continue with Google
-        </button>
-        <p className="mt-3">
-          Don't have an account?{" "}
-          <Link to="/register" className="text-primary">
-            Register
-          </Link>
-        </p>
-      </div>
-    </div>
+   <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-xl rounded-xl">
+  <h2 className="text-2xl font-bold text-center mb-6 text-primary">Login</h2>
+  <form onSubmit={handleSubmit} className="space-y-4">
+    <input type="email" placeholder="Email" className="input input-bordered w-full" />
+    <input type="password" placeholder="Password" className="input input-bordered w-full" />
+    <button className="btn btn-primary w-full">Login</button>
+  </form>
+  <div className="divider">OR</div>
+  <button onClick={signInWithGoogle} className="btn btn-outline w-full">
+    Continue with Google
+  </button>
+</div>
+
   );
 }
