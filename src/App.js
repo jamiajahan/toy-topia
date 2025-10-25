@@ -1,12 +1,23 @@
-// src/App.js
-import React from "react";
-import app from "./firebase"; // Import Firebase
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
-  console.log("Firebase initialized:", app.name);
   return (
     <div className="App">
-      <h1>🔥 Toy Topia Connected to Firebase!</h1>
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
 }
