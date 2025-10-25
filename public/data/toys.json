@@ -1,0 +1,15 @@
+[
+  {
+    "toyId": 1,
+    "toyName": "Lego Classic Bricks",
+    "sellerName": "Toys R Us Local",
+    "sellerEmail": "contact@toysruslocal.com",
+    "price": 49.99,
+    "rating": 4.7,
+    "availableQuantity": 75,
+    "description": "A timeless set...",
+    "pictureURL": "https://i.postimg.cc/4xH8r8rK/lego.png",
+    "subCategory": "Building Blocks"
+  },
+  ...
+]
