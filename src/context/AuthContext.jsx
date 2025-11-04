@@ -1,73 +1,53 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { auth } from '../firebase';
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-  updateProfile,
-  onAuthStateChanged,
-  signOut,
-  sendPasswordResetEmail,
-} from "firebase/auth";
-import app from "../firebase"; // make sure firebase.js is correctly configured
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+signOut,
+onAuthStateChanged,
+updateProfile,
+GoogleAuthProvider,
+signInWithPopup,
+} from 'firebase/auth';
 
-// Create context
+
 const AuthContext = createContext();
 
-// Hook to use auth context
-export const useAuth = () => useContext(AuthContext);
 
-// Firebase Auth instance
-const auth = getAuth(app);
-const googleProvider = new GoogleAuthProvider();
+export function useAuth() { return useContext(AuthContext); }
+
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+const [user, setUser] = useState(null);
+const [loading, setLoading] = useState(true);
 
-  // Register new user
-  const register = (email, password, displayName, photoURL) =>
-    createUserWithEmailAndPassword(auth, email, password).then((res) =>
-      updateProfile(res.user, { displayName, photoURL })
-    );
 
-  // Login with email/password
-  const login = (email, password) =>
-    signInWithEmailAndPassword(auth, email, password);
+useEffect(() => {
+const unsub = onAuthStateChanged(auth, (u) => {
+setUser(u);
+setLoading(false);
+});
+return unsub;
+}, []);
 
-  // Login with Google
-  const signInWithGoogle = () => signInWithPopup(auth, googleProvider);
 
-  // Logout
-  const logout = () => signOut(auth);
+const register = (email, password, name, photoURL) =>
+createUserWithEmailAndPassword(auth, email, password).then(({ user }) =>
+updateProfile(user, { displayName: name, photoURL }).then(() => user)
+);
 
-  // Update user profile
-  const updateUserProfile = (profile) => updateProfile(auth.currentUser, profile);
 
-  // Send password reset email
-  const resetPassword = (email) => sendPasswordResetEmail(auth, email);
+const login = (email, password) => signInWithEmailAndPassword(auth, email, password);
+const logout = () => signOut(auth);
+const updateUserProfile = (profile) => updateProfile(auth.currentUser, profile);
 
-  // Monitor auth state
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
 
-    return () => unsubscribe();
-  }, []);
+const googleProvider = new GoogleAuthProvider();
+const signInWithGoogle = () => signInWithPopup(auth, googleProvider);
 
-  const value = {
-    user,
-    loading,
-    register,
-    login,
-    logout,
-    signInWithGoogle,
-    updateUserProfile,
-    resetPassword,
-  };
 
-  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
+const value = { user, loading, register, login, logout, updateUserProfile, signInWithGoogle };
+
+
+return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
 }

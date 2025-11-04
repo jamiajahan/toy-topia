@@ -8,7 +8,7 @@
     "rating": 4.1,
     "availableQuantity": 75,
     "description": "A timeless set of colorful Lego bricks that encourages creativity and problem-solving. Perfect for young builders.",
-    "pictureURL": "https://i.postimg.cc/4xH8r8rK/lego.png",
+    "pictureURL": "/assets/images/toy-7.jpg",
     "subCategory": "Building Blocks"
   },
   {
@@ -20,7 +20,7 @@
     "rating": 4.2,
     "availableQuantity": 120,
     "description": "A soft, huggable teddy bear made from premium materials. The perfect companion for nap time and playtime.",
-    "pictureURL": "https://i.postimg.cc/zGVjvZp2/teddy.jpg",
+    "pictureURL": "/assets/images/toy-2.jpg",
     "subCategory": "Plush Toys"
   },
   {
@@ -32,7 +32,7 @@
     "rating": 4.5,
     "availableQuantity": 45,
     "description": "A classic wooden train set with magnetic cars and colorful tracks that inspire imaginative play.",
-    "pictureURL": "https://i.postimg.cc/N0Qn5Z8y/train.jpg",
+    "pictureURL": "/assets/images/toy-3.jpg",
     "subCategory": "Wooden Toys"
   },
   {
@@ -44,7 +44,7 @@
     "rating": 4.3,
     "availableQuantity": 60,
     "description": "A fashionable Barbie doll with accessories and outfits, encouraging creativity and storytelling.",
-    "pictureURL": "https://i.postimg.cc/43QwRkH7/barbie.jpg",
+    "pictureURL": "/assets/images/toy-4.jpg",
     "subCategory": "Dolls"
   },
   {
@@ -56,7 +56,7 @@
     "rating": 4.7,
     "availableQuantity": 90,
     "description": "High-speed remote control car with rechargeable batteries. Great for both indoor and outdoor fun.",
-    "pictureURL": "https://i.postimg.cc/65Zsrk3T/car.jpg",
+    "pictureURL": "/assets/images/toy-5.jpg",
     "subCategory": "Electronics"
   },
   {
@@ -68,7 +68,7 @@
     "rating": 4.6,
     "availableQuantity": 50,
     "description": "Miniature kitchen playset with utensils and toy food. Inspires creativity and role-playing fun.",
-    "pictureURL": "https://i.postimg.cc/1t4ghbZk/kitchen.jpg",
+    "pictureURL": "/assets/images/toy-6.jpg",
     "subCategory": "Pretend Play"
   }
 ]

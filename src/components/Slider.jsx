@@ -1,28 +1,34 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation, Autoplay } from "swiper";
 
-const slides = [
-  "https://i.postimg.cc/9FjD5Fq2/slider1.jpg",
-  "https://i.postimg.cc/6Q9Jf2G5/slider2.jpg",
-  "https://i.postimg.cc/T3gkK2Z5/slider3.jpg",
-];
+// 🖼 Import your local images
+import Slide1 from "../assets/images/slide1.jpg";
+import Slide2 from "../assets/images/slide2.jpg";
+import Slide3 from "../assets/images/slide3.jpg";
 
 export default function Slider() {
+  const slides = [
+    { id: 1, title: "Couple Showpice", img: Slide1 },
+    { id: 2, title: "Soft Plush Toys", img: Slide2 },
+    { id: 3, title: "Outdoor Fun", img: Slide3 },
+  ];
+
   return (
-    <div className="max-w-6xl mx-auto my-6">
-      <Swiper
-        modules={[Navigation, Autoplay]}
-        navigation
-        autoplay={{ delay: 4000 }}
-        loop
-        className="rounded-xl shadow-lg"
-      >
-        {slides.map((img, index) => (
-          <SwiperSlide key={index}>
-            <img src={img} alt={`Slide ${index + 1}`} className="w-full h-64 md:h-96 object-cover rounded-xl" />
+    <div className="bg-gradient-to-r from-pink-100 via-yellow-100 to-orange-100 rounded-xl shadow-lg overflow-hidden">
+      <Swiper slidesPerView={1} loop autoplay={{ delay: 4000 }}>
+        {slides.map((s) => (
+          <SwiperSlide key={s.id}>
+            <div
+              className="h-64 md:h-96 bg-cover bg-center flex items-center justify-center"
+              style={{ backgroundImage: `url(${s.img})` }}
+            >
+              <div className="bg-black/40 p-4 rounded-lg">
+                <h2 className="text-3xl md:text-5xl font-bold text-white drop-shadow-md">
+                  {s.title}
+                </h2>
+              </div>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

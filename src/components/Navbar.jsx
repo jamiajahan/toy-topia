@@ -1,56 +1,67 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import React from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+
 
 export default function Navbar() {
-  const { user, logout } = useAuth();
+const { user, logout } = useAuth();
+const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    try {
-      await logout();
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
-  return (
-    <div className="navbar bg-base-100 shadow-md px-4">
-      {/* Left: Brand */}
-      <div className="flex-1">
-        <Link to="/" className="btn btn-ghost normal-case text-xl text-primary">
-          ToyTopia
-        </Link>
-      </div>
+const handleLogout = async () => {
+await logout();
+navigate('/');
+};
 
-      {/* Center: Menu */}
-      <div className="hidden md:flex space-x-4">
-        <Link to="/" className="btn btn-ghost">
-          Home
-        </Link>
-        <Link to="/profile" className="btn btn-ghost">
-          My Profile
-        </Link>
-      </div>
 
-      {/* Right: User */}
-      <div className="flex-none">
-        {user ? (
-          <div className="flex items-center gap-2">
-            <img
-              src={user.photoURL || "https://via.placeholder.com/40"}
-              alt="avatar"
-              className="w-10 h-10 rounded-full"
-            />
-            <button onClick={handleLogout} className="btn btn-sm btn-outline">
-              Logout
-            </button>
-          </div>
-        ) : (
-          <Link to="/login" className="btn btn-primary">
-            Login
-          </Link>
-        )}
-      </div>
+return (
+<nav className="bg-green-200 p-4 shadow-md">
+<div className="container mx-auto flex items-center justify-between">
+<Link to="/" className="font-bold text-xl">ToyTopia</Link>
+<div className="flex items-center gap-4">
+<NavLink
+  to="/"
+  end
+  className={({ isActive }) =>
+    `${isActive ? "text-primary" : "text-gray-700"} hover:text-yellow-500 transition-colors duration-300`
+  }
+>
+  Home
+</NavLink>
 
-      {/* Mobile menu (optional) */}
-      <div className="md:hidden ml-2 dropdown dropdown-end
+<NavLink
+  to="/profile"
+  className={({ isActive }) =>
+    `${isActive ? "text-primary" : "text-gray-700"} hover:text-yellow-500 transition-colors duration-300`
+  }
+>
+  My Profile
+</NavLink>
+
+
+
+{user ? (
+<div className="flex items-center gap-2">
+<img title={user.displayName || user.email} src={user.photoURL || 'https://via.placeholder.com/40'} alt="user" className="w-10 h-10 rounded-full" />
+<button
+  onClick={handleLogout}
+  className="btn btn-sm btn-ghost hover:text-yellow-500 transition-colors duration-300"
+>
+  Logout
+</button>
+
+</div>
+) : (
+<Link
+  to="/login"
+  className="btn btn-primary btn-sm hover:scale-105 transition-transform duration-300"
+>
+  Login
+</Link>
+
+)}
+</div>
+</div>
+</nav>
+);
+}
