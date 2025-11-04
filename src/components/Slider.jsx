@@ -1,8 +1,8 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
-// 🖼 Import your local images
 import Slide1 from "../assets/images/slide1.jpg";
 import Slide2 from "../assets/images/slide2.jpg";
 import Slide3 from "../assets/images/slide3.jpg";
@@ -16,7 +16,12 @@ export default function Slider() {
 
   return (
     <div className="bg-gradient-to-r from-pink-100 via-yellow-100 to-orange-100 rounded-xl shadow-lg overflow-hidden">
-      <Swiper slidesPerView={1} loop autoplay={{ delay: 4000 }}>
+      <Swiper
+        slidesPerView={1}
+        loop={true}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        modules={[Autoplay]}
+      >
         {slides.map((s) => (
           <SwiperSlide key={s.id}>
             <div
