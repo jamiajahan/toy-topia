@@ -42,4 +42,5 @@ Toast notifications for actions (login, logout, registration, form submission)
 
 1. Clone the repository
 
-git clone:
+git clone:https://github.com/jamiajahan/toy-topia.git
+live link: https://golden-chebakia-38ad57.netlify.app/register
