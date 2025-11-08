@@ -1,14 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function ToyCard({ toy }) {
+  // Ensure the image path works for both local and deployed versions
+  const imgSrc = `${process.env.PUBLIC_URL}${toy.pictureURL}`;
+
   return (
-    <div
-      className="card bg-base-100 shadow p-4 rounded-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl"
-      data-aos="fade-up"
-    >
+    <div className="card bg-base-100 shadow p-4 rounded-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl">
       <img
-        src={toy.pictureURL}
+        src={imgSrc}
         alt={toy.toyName}
         className="w-full h-40 sm:h-48 md:h-56 object-cover rounded-lg border border-gray-200"
       />

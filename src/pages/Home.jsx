@@ -5,11 +5,11 @@ import ToyCard from "../components/ToyCard";
 export default function Home() {
   const [toys, setToys] = useState([]);
 
-  useEffect(() => {
+   useEffect(() => {
     fetch("/data/toys.json")
       .then((res) => res.json())
       .then(setToys);
-  }, []);
+  }, [])
 
   return (
     <div className="min-h-screen bg-green-300 from-yellow-50 via-green-50 to-white">
@@ -23,9 +23,13 @@ export default function Home() {
             Popular Toys
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {toys.slice(0, 6).map((toy) => (
-              <ToyCard key={toy.toyId} toy={toy} />
-            ))}
+            {toys.length > 0 ? (
+              toys.slice(0, 6).map((toy) => <ToyCard key={toy.toyId} toy={toy} />)
+            ) : (
+              <p className="text-center col-span-full text-gray-500">
+                Loading toys...
+              </p>
+            )}
           </div>
         </section>
 
@@ -33,8 +37,8 @@ export default function Home() {
         <section className="bg-green-100 from-pink-100 to-yellow-100 rounded-xl shadow-lg p-8 text-center">
           <h3 className="text-2xl font-semibold mb-3">Why Choose ToyTopia?</h3>
           <p className="text-gray-600">
-            We bring happiness to kids by connecting families with trusted local
-            toy sellers. Safe, creative, and always fun!
+            We bring happiness to kids by connecting families with trusted local toy
+            sellers. Safe, creative, and always fun!
           </p>
         </section>
 

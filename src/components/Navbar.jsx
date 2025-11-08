@@ -17,7 +17,7 @@ navigate('/');
 return (
 <nav className="bg-green-200 p-4 shadow-md">
 <div className="container mx-auto flex items-center justify-between">
-<Link to="/" className="font-bold text-xl">ToyTopia</Link>
+<Link to="/" className="font-bold text-xl text-green-900">ToyTopia</Link>
 <div className="flex items-center gap-4">
 <NavLink
   to="/"
